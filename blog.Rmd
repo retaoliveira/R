@@ -1,0 +1,24 @@
+---
+title: "blog"
+output:
+  html_document:
+    toc_depth: 3
+    theme: flatly
+    highlight: textmate
+    mathjax: null
+    lib_dir: libs
+    css: styles.css
+    toc_float:
+      collapsed: false
+---
+
+The examples below illustrate the use of flexdashboard with various packages and layouts. If you want to learn more about how the dashboards were created each example includes a link to it's source code. 
+
+```{r setup, include=FALSE}
+source("utils.R")
+```
+
+```{r, echo=FALSE}
+examples()
+```
+
