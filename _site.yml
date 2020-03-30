@@ -13,6 +13,8 @@ navbar:
       href: geo_R.html
     - text: "Blog"
       href: blog.html
+    - text: "Contact"
+      href: contact.html
   right:
     - icon: fa-github fa-lg
       href: https://github.com/retaoliveira/R

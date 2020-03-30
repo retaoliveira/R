@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
-<title>Sample flexdashboard Layouts</title>
+<title>Econometria e Econometria Espacial</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -23,9 +23,10 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
-<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <script src="libs/ace-1.2.3/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="libs/holder-2.9.0/holder.min.js" type="text/javascript" charset="utf-8"></script>
@@ -49,10 +50,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -87,9 +90,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -103,13 +104,18 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
+}
+summary {
+  display: list-item;
 }
 </style>
 
@@ -117,34 +123,70 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 60px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
-
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 65px;
+  margin-top: -65px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -166,47 +208,66 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-</script>
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
 
 <!-- code folding -->
 
 
-
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = false;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -220,6 +281,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -255,8 +322,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -271,6 +336,16 @@ div.tocify {
 }
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -292,7 +367,7 @@ div.tocify {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">flexdashboard for R</a>
+      <a class="navbar-brand" href="index.html">Geography and Data Science</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -300,21 +375,21 @@ div.tocify {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="using.html">Using</a>
+  <a href="intro_R.html">Introduction to R</a>
 </li>
 <li>
-  <a href="shiny.html">Shiny</a>
+  <a href="econo.html">Econometrics</a>
 </li>
 <li>
-  <a href="layouts.html">Layouts</a>
+  <a href="geo_R.html">Spatial Analysis in R</a>
 </li>
 <li>
-  <a href="examples.html">Examples</a>
+  <a href="blog.html">Blog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/rstudio/flexdashboard">
+  <a href="https://github.com/retaoliveira/R">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -328,7 +403,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Sample flexdashboard Layouts</h1>
+<h1 class="title toc-ignore">Econometria e Econometria Espacial</h1>
 
 </div>
 
@@ -350,7 +425,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('chartstack-fill')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="470px" width="100%">
+<div height="470px">
 <p><img class="holder" data-src="holder.js/100px235?size=28&amp;text=Chart 1"> <img class="holder" data-src="holder.js/100px235?size=28&amp;text=Chart 2"></p>
 </div>
 </div>
@@ -367,7 +442,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('chartstack-scrolling')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="406px" width="100%">
+<div height="406px">
 <p><img class="holder" data-src="holder.js/100px135?size=28&amp;text=Chart 1"> <img class="holder" data-src="holder.js/100px135?size=28&amp;text=Chart 2"> <img class="holder" data-src="holder.js/100px135?size=28&amp;text=Chart 3"></p>
 </div>
 </div>
@@ -384,7 +459,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('focalchart-top')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="440px" width="100%">
+<div height="440px">
 <p><img class="holder" data-src="holder.js/100px298?size=28&amp;text=Chart 1"></p>
 </div>
 <div style="float: left; width: 50%;">
@@ -407,7 +482,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('focalchart-left')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="420px" width="100%">
+<div height="420px">
 <div style="float: left; width: 55%;">
 <p><img class="holder" data-src="holder.js/100px420?size=28&amp;text=Chart 1"></p>
 </div>
@@ -429,7 +504,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('grid2x2')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="524px" width="100%">
+<div height="524px">
 <div>
 <div style="float: left; width: 50%;">
 <p><img class="holder" data-src="holder.js/100px262?size=28&amp;text=Chart 1"></p>
@@ -461,7 +536,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('tabsetcolumn')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="422px" width="100%">
+<div height="422px">
 <p><img src="images/tabset-column.png" width=415 height=422></p>
 </div>
 </div>
@@ -478,7 +553,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('tabsetrow')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="454px" width="100%">
+<div height="454px">
 <p><img src="images/tabset-row.png" width=415 height=454></p>
 </div>
 </div>
@@ -512,7 +587,7 @@ div.tocify {
 <script type="text/javascript">loadSnippet('sidebarlayout')</script>
 </div>
 <div class="col-md-6 nopadding">
-<div height="422px" width="100%">
+<div height="422px">
 <div style="float: left; width: 35%;">
 <p><img class="holder" data-src="holder.js/100px422?size=28&amp;bg=CCCCCC&amp;fg=CCCCCC"></p>
 </div>
@@ -559,6 +634,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 

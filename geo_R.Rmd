@@ -2,10 +2,18 @@
 title: "Análise espacial no R"
 output:
   html_document:
-    toc: true
     toc_depth: 3
+    include:
+      in_header: head.html
+      after_body: footer.html
+    theme: flatly
+    highlight: textmate
+    mathjax: null
+    lib_dir: libs
+    css: styles.css
+    logo: logo.jpg
     toc_float:
-      collapsed: true
+      collapsed: false
 ---
 
 ## TEste

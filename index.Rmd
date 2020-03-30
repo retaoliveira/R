@@ -18,7 +18,7 @@ output:
     toc_float:
       collapsed: false
 ---
-![](logo.png)
+
 ```{r setup, include=FALSE}
 source("utils.R")
 ```
