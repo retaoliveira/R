@@ -1,5 +1,5 @@
 ---
-title: "blog"
+title: "Blog"
 output:
   html_document:
     toc_depth: 3
