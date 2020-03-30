@@ -1,6 +1,6 @@
 ---
 title: "Geography and Data Science"
-author: "Renata Lúcia Magalhães de Oliveira"
+author: "Contribuições - Renata Lúcia Magalhães de Oliveira e Lucélia Viviane Vaz Raad"
 website: "https://retaoliveira.github.io/R"
     
 output:
