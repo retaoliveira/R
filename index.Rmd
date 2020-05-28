@@ -27,7 +27,7 @@ source("utils.R")
 
 <div class="col-sm-8">
 
-* Lucélia, você está intimada a começar a contribuir por aqui.. veja se concorda com a estrutura do site... pode mudar à vontade!!!!!  Adoro! 
+
 
 </div>
 
